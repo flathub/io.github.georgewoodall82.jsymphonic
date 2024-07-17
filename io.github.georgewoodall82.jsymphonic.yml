@@ -26,7 +26,7 @@ modules:
           - /app/jre/bin/java -jar /app/jsymphonic/jsymphonic.jar
       - type: file
         url: https://github.com/georgewoodall82/jsymphonic/releases/download/0.5.4/jsymphonic-0.5.4.jar
-        sha256: 363db026e98a87ce2e240551cbaa1f14bf11154fbac53875e157a730fc21090b
+        sha256: 965727e22695c045a524e5908b1683c17c326c1233314136508bd8b686a96d56
       - type: file
         url: https://raw.githubusercontent.com/georgewoodall82/jsymphonic/0.5.4/io.github.georgewoodall82.jsymphonic.desktop
         sha256: a1ea3a67faa6d2b66b887725eb4f6f1d9e518bcedf33ea8e14b6a548fae9fb57
