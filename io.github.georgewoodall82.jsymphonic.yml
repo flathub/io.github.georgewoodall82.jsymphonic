@@ -25,14 +25,14 @@ modules:
         commands:
           - /app/jre/bin/java -jar /app/jsymphonic/jsymphonic.jar
       - type: file
-        url: https://github.com/georgewoodall82/jsymphonic/releases/download/0.5.1/jsymphonic-0.5.1.jar
-        sha256: 363db026e98a87ce2e240551cbaa1f14bf11154fbac53875e157a730fc21090b
+        url: https://github.com/georgewoodall82/jsymphonic/releases/download/0.5.4/jsymphonic-0.5.4.jar
+        sha256: 965727e22695c045a524e5908b1683c17c326c1233314136508bd8b686a96d56
       - type: file
-        url: https://raw.githubusercontent.com/georgewoodall82/jsymphonic/0.5.1/io.github.georgewoodall82.jsymphonic.desktop
+        url: https://raw.githubusercontent.com/georgewoodall82/jsymphonic/0.5.4/io.github.georgewoodall82.jsymphonic.desktop
         sha256: a1ea3a67faa6d2b66b887725eb4f6f1d9e518bcedf33ea8e14b6a548fae9fb57
       - type: file
-        url: https://raw.githubusercontent.com/georgewoodall82/jsymphonic/0.5.1/io.github.georgewoodall82.jsymphonic.svg
+        url: https://raw.githubusercontent.com/georgewoodall82/jsymphonic/0.5.4/io.github.georgewoodall82.jsymphonic.svg
         sha256: aef1f370d43562c6faaf130f1c049424740b7e8e968bd5a5071bec5ec0a6c92e
       - type: file
-        url: https://raw.githubusercontent.com/georgewoodall82/jsymphonic/0.5.1/io.github.georgewoodall82.jsymphonic.metainfo.xml
-        sha256: bacac8a5150eacb0190ab4f298b65c80839f5372b932c8f73fce92251f77d691
+        url: https://raw.githubusercontent.com/georgewoodall82/jsymphonic/0.5.4/io.github.georgewoodall82.jsymphonic.metainfo.xml
+        sha256: 2fe6213ef0522c0da2d32714087a2ae5d5eaf0d90e0e2a74a18dd88213f1790e
