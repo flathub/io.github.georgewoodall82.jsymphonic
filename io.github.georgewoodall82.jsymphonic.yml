@@ -1,6 +1,6 @@
 id: io.github.georgewoodall82.jsymphonic
 runtime: org.freedesktop.Platform
-runtime-version: '23.08'
+runtime-version: '25.08'
 finish-args:
   - --socket=x11
   - --share=ipc
@@ -15,9 +15,9 @@ modules:
     build-commands:
       - /usr/lib/sdk/openjdk21/install.sh
       - install -D ./jsymphonic-*.jar /app/jsymphonic/jsymphonic.jar
-      - install -Dm644 ${FLATPAK_ID}.metainfo.xml /app/share/metainfo/${FLATPAK_ID}.metainfo.xml
-      - install -D ${FLATPAK_ID}.svg /app/share/icons/hicolor/scalable/apps/${FLATPAK_ID}.svg
-      - install -D ${FLATPAK_ID}.desktop /app/share/applications/${FLATPAK_ID}.desktop
+      - install -Dm644 ${FLATPAK_ID}.metainfo.xml -t /app/share/metainfo/
+      - install -Dm644 ${FLATPAK_ID}.svg -t /app/share/icons/hicolor/scalable/apps/
+      - install -Dm644 ${FLATPAK_ID}.desktop -t /app/share/applications/
       - install -Dm755 jsymphonic.sh /app/bin/jsymphonic
     sources:
       - type: script
