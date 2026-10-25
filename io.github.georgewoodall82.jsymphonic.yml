@@ -1,19 +1,19 @@
 id: io.github.georgewoodall82.jsymphonic
 runtime: org.freedesktop.Platform
-runtime-version: '25.08'
+runtime-version: '26.08'
 finish-args:
   - --socket=x11
   - --share=ipc
   - --filesystem=host
 sdk: org.freedesktop.Sdk
 sdk-extensions:
-  - org.freedesktop.Sdk.Extension.openjdk21
+  - org.freedesktop.Sdk.Extension.openjdk25
 command: jsymphonic
 modules:
   - name: jsymphonic
     buildsystem: simple
     build-commands:
-      - /usr/lib/sdk/openjdk21/install.sh
+      - /usr/lib/sdk/openjdk25/install.sh
       - install -D ./jsymphonic-*.jar /app/jsymphonic/jsymphonic.jar
       - install -Dm644 ${FLATPAK_ID}.metainfo.xml -t /app/share/metainfo/
       - install -Dm644 ${FLATPAK_ID}.svg -t /app/share/icons/hicolor/scalable/apps/
@@ -25,14 +25,30 @@ modules:
         commands:
           - /app/jre/bin/java -jar /app/jsymphonic/jsymphonic.jar
       - type: file
-        url: https://github.com/georgewoodall82/jsymphonic/releases/download/0.5.4/jsymphonic-0.5.4.jar
-        sha256: 965727e22695c045a524e5908b1683c17c326c1233314136508bd8b686a96d56
+        url: https://github.com/georgewoodall82/jsymphonic/releases/download/0.7.0/jsymphonic-0.7.0.jar
+        sha256: e6a27557827d713c8f72f6088af666e45915dc4a2b92bddc568a9e9b7428da2c
       - type: file
-        url: https://raw.githubusercontent.com/georgewoodall82/jsymphonic/0.5.4/io.github.georgewoodall82.jsymphonic.desktop
+        url: https://raw.githubusercontent.com/georgewoodall82/jsymphonic/0.7.0/io.github.georgewoodall82.jsymphonic.desktop
         sha256: a1ea3a67faa6d2b66b887725eb4f6f1d9e518bcedf33ea8e14b6a548fae9fb57
       - type: file
-        url: https://raw.githubusercontent.com/georgewoodall82/jsymphonic/0.5.4/io.github.georgewoodall82.jsymphonic.svg
+        url: https://raw.githubusercontent.com/georgewoodall82/jsymphonic/0.7.0/io.github.georgewoodall82.jsymphonic.svg
         sha256: aef1f370d43562c6faaf130f1c049424740b7e8e968bd5a5071bec5ec0a6c92e
       - type: file
-        url: https://raw.githubusercontent.com/georgewoodall82/jsymphonic/0.5.4/io.github.georgewoodall82.jsymphonic.metainfo.xml
-        sha256: 2fe6213ef0522c0da2d32714087a2ae5d5eaf0d90e0e2a74a18dd88213f1790e
+        url: https://raw.githubusercontent.com/georgewoodall82/jsymphonic/0.7.0/io.github.georgewoodall82.jsymphonic.metainfo.xml
+        sha256: beaccbb02afd83213debd6f0b8b9cd8e729ec6ccb51a39a3d2c1af575e354ac6
+  - name: ffmpeg
+    buildsystem: simple
+    build-commands:
+      - mkdir lame-3.100 ffmpeg-9.0.2 && tar xf lame-3.100.tar.gz -C lame-3.100 --strip-components=1 && tar xf ffmpeg-9.0.2.tar.xz -C ffmpeg-9.0.2 --strip-components=1
+      - cd lame-3.100 && ./configure --prefix="${PWD}/../lame" --disable-shared --enable-static --disable-frontend && make -j${FLATPAK_BUILDER_N_JOBS} && make install
+      - cd ffmpeg-9.0.2 && PKG_CONFIG_PATH="${PWD}/../lame/lib/pkgconfig" ./configure --prefix=/app --disable-autodetect --enable-libmp3lame --disable-shared --enable-static --disable-doc --disable-debug --disable-ffplay --disable-ffprobe && make -j${FLATPAK_BUILDER_N_JOBS}
+      - install -Dm755 ffmpeg-9.0.2/ffmpeg /app/bin/ffmpeg
+      - install -Dm644 ffmpeg-9.0.2/COPYING.LGPLv2.1 /app/share/licenses/ffmpeg/COPYING.LGPLv2.1
+      - install -Dm644 lame-3.100/COPYING /app/share/licenses/lame/COPYING
+    sources:
+      - type: file
+        url: https://downloads.sourceforge.net/project/lame/lame/3.100/lame-3.100.tar.gz
+        sha256: ddfe36cab873794038ae2c1210557ad34857a4b6bdc515785d1da9e175b1da1e
+      - type: file
+        url: https://ffmpeg.org/releases/ffmpeg-9.0.2.tar.xz
+        sha256: 8c3850283eb25fa026482078a04051e0be17347b09ef81a0849bec15a96e002e
