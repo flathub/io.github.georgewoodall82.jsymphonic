@@ -1,19 +1,19 @@
 id: io.github.georgewoodall82.jsymphonic
 runtime: org.freedesktop.Platform
-runtime-version: '25.08'
+runtime-version: '26.08'
 finish-args:
   - --socket=x11
   - --share=ipc
   - --filesystem=host
 sdk: org.freedesktop.Sdk
 sdk-extensions:
-  - org.freedesktop.Sdk.Extension.openjdk21
+  - org.freedesktop.Sdk.Extension.openjdk25
 command: jsymphonic
 modules:
   - name: jsymphonic
     buildsystem: simple
     build-commands:
-      - /usr/lib/sdk/openjdk21/install.sh
+      - /usr/lib/sdk/openjdk25/install.sh
       - install -D ./jsymphonic-*.jar /app/jsymphonic/jsymphonic.jar
       - install -Dm644 ${FLATPAK_ID}.metainfo.xml -t /app/share/metainfo/
       - install -Dm644 ${FLATPAK_ID}.svg -t /app/share/icons/hicolor/scalable/apps/
@@ -25,14 +25,14 @@ modules:
         commands:
           - /app/jre/bin/java -jar /app/jsymphonic/jsymphonic.jar
       - type: file
-        url: https://github.com/georgewoodall82/jsymphonic/releases/download/0.5.4/jsymphonic-0.5.4.jar
-        sha256: 965727e22695c045a524e5908b1683c17c326c1233314136508bd8b686a96d56
+        url: https://github.com/georgewoodall82/jsymphonic/releases/download/0.7.0/jsymphonic-0.7.0.jar
+        sha256: e6a27557827d713c8f72f6088af666e45915dc4a2b92bddc568a9e9b7428da2c
       - type: file
-        url: https://raw.githubusercontent.com/georgewoodall82/jsymphonic/0.5.4/io.github.georgewoodall82.jsymphonic.desktop
+        url: https://raw.githubusercontent.com/georgewoodall82/jsymphonic/0.7.0/io.github.georgewoodall82.jsymphonic.desktop
         sha256: a1ea3a67faa6d2b66b887725eb4f6f1d9e518bcedf33ea8e14b6a548fae9fb57
       - type: file
-        url: https://raw.githubusercontent.com/georgewoodall82/jsymphonic/0.5.4/io.github.georgewoodall82.jsymphonic.svg
+        url: https://raw.githubusercontent.com/georgewoodall82/jsymphonic/0.7.0/io.github.georgewoodall82.jsymphonic.svg
         sha256: aef1f370d43562c6faaf130f1c049424740b7e8e968bd5a5071bec5ec0a6c92e
       - type: file
-        url: https://raw.githubusercontent.com/georgewoodall82/jsymphonic/0.5.4/io.github.georgewoodall82.jsymphonic.metainfo.xml
-        sha256: 2fe6213ef0522c0da2d32714087a2ae5d5eaf0d90e0e2a74a18dd88213f1790e
+        url: https://raw.githubusercontent.com/georgewoodall82/jsymphonic/0.7.0/io.github.georgewoodall82.jsymphonic.metainfo.xml
+        sha256: beaccbb02afd83213debd6f0b8b9cd8e729ec6ccb51a39a3d2c1af575e354ac6
